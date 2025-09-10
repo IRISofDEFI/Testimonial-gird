@@ -1,107 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&display=swap');
+
+:root {
+    /* Primary */
+    --purple50: #eee5ff;
+    --purple300: #c4a2f6;
+    --purple500: #7541c8;
+
+    /* Neutral */
+    --grey100: #e7eaee;
+    --grey200: #cfcfcf;
+    --grey400: #676d7e;
+    --grey500: #48556a;
+    --dark-blue: #19212e;
+    --black: #121212;
+}
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    background: hsl(210, 46%, 95%);
-    color: hsl(210, 10%, 23%);
-    line-height: 1.5;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: 1rem;
+    color: var(--grey200);
+    background-color: var(--grey100);
+}
+
+.main {
     padding: 2rem;
-    display: flex;
-    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.testimonials {
+.section {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-        "daniel daniel jonathan kira"
-        "jeanette patrick patrick kira";
     gap: 1.5rem;
-    max-width: 1200px;
-    width: 100%;
 }
 
-/* General card styles */
 .card {
-    background: white;
+    padding: 1.5rem 1rem;
     border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.card header {
+/* ----- Profile ----- */
+.profile-section {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 1.5rem;
 }
 
-.card header img {
-    width: 40px;
-    height: 40px;
+.profile-section img {
+    width: 50px;
     border-radius: 50%;
-    margin-right: 1rem;
 }
 
-.card h2 {
-    font-size: 0.9rem;
-    font-weight: 600;
+.card-1 .profile-section img,
+.card-4 .profile-section img {
+    border: 2px solid var(--purple300);
 }
 
-.card p {
-    font-size: 0.8rem;
-    opacity: 0.8;
+/* ----- Titles ----- */
+.card .title {
+    margin: 1.5rem 0;
 }
 
-.card h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+/* ----- Cards colors ----- */
+.card-1 {
+    background-color: var(--purple500);
 }
 
-/* Specific card placements */
-.card-purple {
-    background: hsl(263, 55%, 52%);
-    color: white;
-    grid-area: daniel;
+.card-2 {
+    background-color: var(--grey500);
 }
 
-.card-gray {
-    background: hsl(217, 19%, 35%);
-    color: white;
-    grid-area: jonathan;
+.card-3 {
+    background-color: #fff;
 }
 
-.card-white:first-of-type {
-    background: white;
-    color: hsl(217, 19%, 35%);
-    grid-area: jeanette;
+.card-4 {
+    background-color: var(--dark-blue);
 }
 
-.card-dark {
-    background: hsl(219, 29%, 14%);
-    color: white;
-    grid-area: patrick;
+.card-5 {
+    background-color: #fff;
 }
 
-.card-white:last-of-type {
-    background: white;
-    color: hsl(217, 19%, 35%);
-    grid-area: kira;
+/* ----- Text by type of card ----- */
+.card-1,
+.card-2,
+.card-4 {
+    color: var(--grey100);
 }
 
-/* Mobile: stack everything */
-@media (max-width: 768px) {
-    .testimonials {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "daniel"
-            "jonathan"
-            "jeanette"
-            "patrick"
-            "kira";
+.card-1 .title,
+.card-2 .title,
+.card-4 .title {
+    color: var(--grey100);
+}
+
+.card-3,
+.card-5 {
+    color: var(--grey400);
+}
+
+.card-3 .title,
+.card-5 .title {
+    color: var(--grey500);
+}
+
+@media (min-width: 768px) {
+    .section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .section {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card-1 {
+        grid-column: span 2;
+    }
+
+    .card-5 {
+        grid-column: 4;
+        grid-row: 1 / span 2;
+    }
+
+    .card-4 {
+        grid-column: span 2;
     }
 }
